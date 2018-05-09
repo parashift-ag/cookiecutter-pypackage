@@ -1,0 +1,7 @@
+{{cookiecutter.project_name}}:
+  build:
+    image: parashift/{{cookiecutter.project_name}}
+    dockerfile: Dockerfile
+  volumes:
+    - ./coverage:{{cookiecutter.docker_workdir}}/coverage
+  cached: true

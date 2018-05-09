@@ -1,0 +1,32 @@
+- type: serial 
+  steps:
+    - name: codeclimate_pre
+      service: {{ cookiecutter.project_name }} 
+      command: cc-test-reporter before-build
+      encrypted_dockercfg_path: dockercfg.encrypted
+    - name: tests
+      service: {{ cookiecutter.project_name }} 
+      command: py.test --cov=. --cov-report=xml:coverage/coverage.xml
+    - name: codeclimate_post
+      service: {{ cookiecutter.project_name }} 
+      command: bash {{cookiecutter.docker_workdir}}/code-climate-push.sh
+
+- type: serial
+  steps:
+    - name: dockerhub_push_feature
+      except: master
+      service: {{ cookiecutter.project_name }} 
+      type: push
+      image_name: parashift/{{cookiecutter.project_name}}
+      image_tag: "{{ '{{' }} .Branch {{ '}}' }}"
+      registry: https://index.docker.io/v1/
+      encrypted_dockercfg_path: dockercfg.encrypted
+    - name: dockerhub_push_master
+      tag: (master|dev)
+      service: {{ cookiecutter.project_name }} 
+      type: push
+      image_name: parashift/{{cookiecutter.project_name}}
+      image_tag: "{{ '{{' }} .CommitID {{ '}}' }}"
+      registry: https://index.docker.io/v1/
+      encrypted_dockercfg_path: dockercfg.encrypted
+

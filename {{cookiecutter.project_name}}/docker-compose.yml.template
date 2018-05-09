@@ -1,0 +1,20 @@
+version: "3.5"
+services:
+  server:
+    tty: true
+    stdin_open: true
+    build: .
+    image: parashift/{{cookiecutter.project_name}}:latest
+    volumes:
+      - ./{{cookiecutter.project_slug}}:{{cookiecutter.docker_workdir}}/{{cookiecutter.project_slug}}
+      - ./fixtures:{{cookiecutter.docker_workdir}}/fixtures
+    depends_on:
+      - rabbitmq
+    restart: on-failure
+
+  rabbitmq:
+    image: rabbitmq:management-alpine
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+

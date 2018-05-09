@@ -1,16 +1,19 @@
 {
-  "full_name": "Audrey Roy Greenfeld",
-  "email": "audreyr@example.com",
-  "github_username": "audreyr",
-  "project_name": "Python Boilerplate",
+  "full_name": "Andre Bieler",
+  "email": "andre.bieler@parashift.io",
+  "github_username": "abieler",
+  "project_name": "new-project",
   "project_slug": "{{ cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_') }}",
-  "project_short_description": "Python Boilerplate contains all the boilerplate you need to create a Python package.",
+  "docker_base_image": "parashift/ubuntu-tesseract-4:v0.0.8",
+  "docker_workdir": "/app",
+  "cc_test_reporter_id": "<look up test reporter id on codeclimate>",
+  "project_short_description": "Add your short description.",
   "pypi_username": "{{ cookiecutter.github_username }}",
   "version": "0.1.0",
-  "use_pytest": "n",
-  "use_pypi_deployment_with_travis": "y",
+  "use_pytest": "y",
+  "use_pypi_deployment_with_travis": "n",
   "add_pyup_badge": "n",
-  "command_line_interface": ["Click", "No command-line interface"],
+  "command_line_interface": ["No command-line interface", "Click"],
   "create_author_file": "y",
-  "open_source_license": ["MIT license", "BSD license", "ISC license", "Apache Software License 2.0", "GNU General Public License v3", "Not open source"]
+  "open_source_license": ["Not open source", "MIT license", "BSD license", "ISC license", "Apache Software License 2.0", "GNU General Public License v3"]
 }
