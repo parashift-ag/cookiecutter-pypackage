@@ -6,7 +6,7 @@
   "project_slug": "{{ cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_') }}",
   "docker_base_image": "parashift/ubuntu-tesseract-4:v0.0.8",
   "docker_workdir": "/app",
-  "codeclimate_test_reporter_id": "",
+  "cc_test_reporter_id": "<look up test reporter id on codeclimate>",
   "project_short_description": "Add your short description.",
   "pypi_username": "{{ cookiecutter.github_username }}",
   "version": "0.1.0",
